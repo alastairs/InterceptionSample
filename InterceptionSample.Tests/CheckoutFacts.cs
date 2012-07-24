@@ -29,6 +29,18 @@ namespace InterceptionSample.Tests
 
                 Assert.That(scannedItemPrice, Is.EqualTo(price));
             }
+
+            [TestCase("AA", 100)]
+            [TestCase("CC", 40)]
+            [TestCase("DD", 30)]
+            public void ReturnDoubleTheItemPriceWhenASingleItemIsScannedTwice(string sku, int price)
+            {
+                var checkout = new Checkout();
+
+                var scannedItemPrice = checkout.GetTotal(sku);
+
+                Assert.That(scannedItemPrice, Is.EqualTo(price));
+            }
         }
     }
 }
