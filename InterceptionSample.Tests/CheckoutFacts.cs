@@ -10,7 +10,7 @@ namespace InterceptionSample.Tests
             [Test]
             public void Return0WhenNoItemIsScanned()
             {
-                var checkout = new Checkout();
+                var checkout = new Checkout(new StockRoom());
 
                 var scannedItemPrice = checkout.GetTotal(string.Empty);
 
@@ -23,7 +23,7 @@ namespace InterceptionSample.Tests
             [TestCase("D", 15)]
             public void ReturnTheItemPriceWhenASingleItemIsScannedOnce(string sku, int price)
             {
-                var checkout = new Checkout();
+                var checkout = new Checkout(new StockRoom());
 
                 var scannedItemPrice = checkout.GetTotal(sku);
 
@@ -35,7 +35,7 @@ namespace InterceptionSample.Tests
             [TestCase("DD", 30)]
             public void ReturnDoubleTheItemPriceWhenASingleItemIsScannedTwice(string sku, int price)
             {
-                var checkout = new Checkout();
+                var checkout = new Checkout(new StockRoom());
 
                 var scannedItemPrice = checkout.GetTotal(sku);
 

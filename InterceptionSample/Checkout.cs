@@ -1,21 +1,20 @@
-using System.Collections.Generic;
+using System;
 using System.Linq;
 
 namespace InterceptionSample
 {
-    public class Checkout
+    public class Checkout : ICheckout
     {
-        private readonly IDictionary<char, int> prices;
+        private readonly IStockRoom stockRoom;
 
-        public Checkout()
+        public Checkout(IStockRoom stockRoom)
         {
-            prices = new Dictionary<char, int>
+            if (stockRoom == null)
             {
-                {'A', 50},
-                {'B', 30},
-                {'C', 20},
-                {'D', 15}
-            };
+                throw new ArgumentNullException("stockRoom");
+            }
+
+            this.stockRoom = stockRoom;
         }
 
         public int GetTotal(string skus)
@@ -25,13 +24,7 @@ namespace InterceptionSample
 
         private int ScanItem(char sku)
         {
-            int itemPrice;
-            if (prices.TryGetValue(sku, out itemPrice))
-            {
-                return itemPrice;
-            }
-
-            return itemPrice;
+            return stockRoom.GetPriceForItem(sku);
         }
     }
 }
