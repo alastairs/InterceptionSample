@@ -65,6 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Checkout.cs" />
+    <Compile Include="DomainObjects\IPriceList.cs" />
+    <Compile Include="DomainObjects\IProductScanner.cs" />
+    <Compile Include="DomainObjects\Product.cs" />
+    <Compile Include="DomainObjects\ProductScanner.cs" />
+    <Compile Include="DomainObjects\StockKeepingUnit.cs" />
     <Compile Include="ICheckout.cs" />
     <Compile Include="IStockRoom.cs" />
     <Compile Include="Program.cs" />
